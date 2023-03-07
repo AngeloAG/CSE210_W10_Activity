@@ -44,4 +44,19 @@ public class SPAMMenu
     Console.Write("Please select the numerical value of the choice you wish to proceed with: ");
     return Console.ReadLine();
   }
+
+  public void SPAMsubMenu()
+  {
+    Console.WriteLine("The Types of Goals are");
+    Console.WriteLine(" 1). Simple Goal");
+    Console.WriteLine(" 2). Eternal Goal");
+    Console.WriteLine(" 3). Checklist Goal");
+  }
+
+  public string SPAMsubSelection()
+  {
+    Console.Write("What type of Goal would you like to create? ");
+    return Console.ReadLine();
+  }
+
 }
