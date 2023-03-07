@@ -35,11 +35,11 @@ public class SpamEternalGoal : SpamParentGoal
   {
     if(base.SpamGetIsComplete() == true)
     {
-      return string.Format("[x] {0} ({1})", _spamName, _spamDescription);
+      return string.Format("[x] {0} ({1})", base._spamName, base._spamDescription);
     }
     else
     {
-      return string.Format("[ ] {0} ({1})", _spamName, _spamDescription);
+      return string.Format("[ ] {0} ({1})", base._spamName, base._spamDescription);
     }
   }
 }
