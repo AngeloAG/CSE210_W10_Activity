@@ -1,0 +1,19 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Develop 05 (Goal Tracker)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-prove-Develop05",
+            "program": "${workspaceFolder}/prove/Develop05/bin/Debug/net7.0/Develop05.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/prove/Develop05",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        }
+
+    ]
+}
