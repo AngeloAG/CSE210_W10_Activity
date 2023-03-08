@@ -19,12 +19,10 @@ Behaviors:
 
 */
 
-using System;
-
-class Program
+public class SpamChecklistGoal
 {
-  static void Main(string[] args)
+  public SpamChecklistGoal()
   {
-    Console.WriteLine("Hello Develop05 World!");
+
   }
 }

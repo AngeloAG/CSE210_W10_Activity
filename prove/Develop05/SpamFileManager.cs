@@ -19,12 +19,10 @@ Behaviors:
 
 */
 
-using System;
-
-class Program
+public class SpamFileManager
 {
-  static void Main(string[] args)
+  public SpamFileManager()
   {
-    Console.WriteLine("Hello Develop05 World!");
+
   }
 }

@@ -19,12 +19,10 @@ Behaviors:
 
 */
 
-using System;
-
-class Program
+public class SpamMenu
 {
-  static void Main(string[] args)
+  public SpamMenu()
   {
-    Console.WriteLine("Hello Develop05 World!");
+
   }
 }

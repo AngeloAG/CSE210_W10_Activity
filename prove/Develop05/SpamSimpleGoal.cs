@@ -19,12 +19,10 @@ Behaviors:
 
 */
 
-using System;
-
-class Program
+public class SpamSimpleGoal
 {
-  static void Main(string[] args)
+  public SpamSimpleGoal()
   {
-    Console.WriteLine("Hello Develop05 World!");
+
   }
 }

@@ -19,12 +19,11 @@ Behaviors:
 
 */
 
-using System;
-
-class Program
+public class SpamParentGoal
 {
-  static void Main(string[] args)
+
+  public SpamParentGoal()
   {
-    Console.WriteLine("Hello Develop05 World!");
+
   }
 }
