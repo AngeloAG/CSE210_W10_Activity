@@ -89,9 +89,10 @@ class Program
         case "2":
           // List goals
           SpamPrint("The goals are:");
+          int spamCounter = 1;
           foreach (SpamParentGoal spamGoal in spamGoals)
           {
-            SpamPrint(spamGoal.SpamToString());
+            SpamPrint($"{spamCounter}. {spamGoal.SpamToString()}");
           }
           SpamPrint("Press Enter to continue");
           SpamRead();
@@ -105,9 +106,10 @@ class Program
         case "5":
           // Record Event
           SpamPrint("The goals are:");
+          int spamCounter2 = 1;
           foreach (SpamParentGoal spamGoal in spamGoals)
           {
-            SpamPrint(spamGoal.SpamToString());
+            SpamPrint($"{spamCounter2}. {spamGoal.SpamToString()}");
           }
           SpamPrintNoBreak("Which goal did you accomplish? ");
           int spamCompltGoal = int.Parse(SpamRead());
