@@ -115,7 +115,16 @@ class Program
           }
           SpamPrintNoBreak("Which goal did you accomplish? ");
           int spamCompltGoal = int.Parse(SpamRead());
-          int spamEarnedPoints = spamGoals[spamCompltGoal - 1].SpamRecordEvent();
+          int spamEarnedPoints = 0;
+          if (spamGoals[spamCompltGoal - 1].SpamGetIsComplete())
+          {
+            SpamPrint("The goal is already complete.");
+          }
+          else
+          {
+            spamEarnedPoints = spamGoals[spamCompltGoal - 1].SpamRecordEvent();
+          }
+
           SpamPrint("");
           SpamPrint($"Congratulations! You have earned {spamEarnedPoints} points!");
           spamCurrentPoints += spamEarnedPoints;
