@@ -38,10 +38,20 @@ public class SpamFileManager
     {
       List<string> SpamParts = SpamLine.Split("|");
     }
+
+    return SpamLines;
   }
 
   public void SpamFileSaver(List<string> SpamGoalList, int SpamPointsTotal)
   {
-    
+    string SpamFilename = "GoalsAndPoints.txt";
+
+  // Loads what is currently stored into the txt document
+    List<List<string>> SpameLoadFile = SpamFileLoader();
+
+    using (StreamWriter SpamOutputFile = new StreamWriter(SpamFilename))
+    {
+      
+    }
   }
 }
