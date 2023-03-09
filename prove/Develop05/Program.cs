@@ -93,6 +93,7 @@ class Program
           foreach (SpamParentGoal spamGoal in spamGoals)
           {
             SpamPrint($"{spamCounter}. {spamGoal.SpamToString()}");
+            spamCounter++;
           }
           SpamPrint("Press Enter to continue");
           SpamRead();
@@ -110,6 +111,7 @@ class Program
           foreach (SpamParentGoal spamGoal in spamGoals)
           {
             SpamPrint($"{spamCounter2}. {spamGoal.SpamToString()}");
+            spamCounter2++;
           }
           SpamPrintNoBreak("Which goal did you accomplish? ");
           int spamCompltGoal = int.Parse(SpamRead());
