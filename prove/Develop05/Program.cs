@@ -26,7 +26,7 @@ class Program
   static void Main(string[] args)
   {
     Console.Clear();
-    int spamPoints = 0;
+    int spamCurrentPoints = 0;
     List<SpamParentGoal> spamGoals = new List<SpamParentGoal>();
     SPAMMenu spamMenu = new SPAMMenu();
     bool spamKeepRunning = true;
@@ -35,6 +35,8 @@ class Program
     {
       Console.Clear();
       SpamPrint("SPAM Goal Tracker");
+      SpamPrint("");
+      SpamPrint($"You have {spamCurrentPoints} points");
       SpamPrint("");
       spamMenu.SPAMmenuSelection();
       String spamChoice = spamMenu.SPAMselection();
@@ -74,10 +76,10 @@ class Program
               // Checklist Goal
               SpamPrint("");
               SpamPrintNoBreak("How many times does this goal need to be accomplished for a bonus? ");
-              spamGoalBonus = int.Parse(SpamRead());
+              spamGoalTimesTotal = int.Parse(SpamRead());
               SpamPrint("");
               SpamPrintNoBreak("What is the bonus for accomplishing it that many times? ");
-              spamGoalTimesTotal = int.Parse(SpamRead());
+              spamGoalBonus = int.Parse(SpamRead());
 
               SpamChecklistGoal spamChecklistGoal = new SpamChecklistGoal(spamGoalName, spamGoalDesc, spamGoalPoints, spamGoalTimesTotal, spamGoalBonus);
               spamGoals.Add(spamChecklistGoal);
@@ -91,6 +93,8 @@ class Program
           {
             SpamPrint(spamGoal.SpamToString());
           }
+          SpamPrint("Press Enter to continue");
+          SpamRead();
           break;
         case "3":
           // Save Goals
@@ -100,6 +104,20 @@ class Program
           break;
         case "5":
           // Record Event
+          SpamPrint("The goals are:");
+          foreach (SpamParentGoal spamGoal in spamGoals)
+          {
+            SpamPrint(spamGoal.SpamToString());
+          }
+          SpamPrintNoBreak("Which goal did you accomplish? ");
+          int spamCompltGoal = int.Parse(SpamRead());
+          int spamEarnedPoints = spamGoals[spamCompltGoal - 1].SpamRecordEvent();
+          SpamPrint("");
+          SpamPrint($"Congratulations! You have earned {spamEarnedPoints} points!");
+          spamCurrentPoints += spamEarnedPoints;
+          SpamPrint($"You now have {spamCurrentPoints} points");
+          SpamPrint("Press enter to continue");
+          SpamRead();
           break;
         case "6":
           // Quit
