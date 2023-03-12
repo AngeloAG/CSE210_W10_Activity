@@ -33,7 +33,7 @@ public class SpamEternalGoal : SpamParentGoal
 
   public override string SpamToString()
   {
-    if(base.SpamGetIsComplete() == true)
+    if (base.SpamGetIsComplete() == true)
     {
       return string.Format("[x] {0} ({1})", base._spamName, base._spamDescription);
     }
@@ -41,5 +41,10 @@ public class SpamEternalGoal : SpamParentGoal
     {
       return string.Format("[ ] {0} ({1})", base._spamName, base._spamDescription);
     }
+  }
+
+  public override string SpamGetStringToSave()
+  {
+    return $"{_spamName}|{_spamDescription}|{_spamPoints}|{_spamIsComplete}|eternal";
   }
 }

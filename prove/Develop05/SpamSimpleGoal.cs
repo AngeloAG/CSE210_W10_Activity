@@ -22,21 +22,28 @@ Tracks and stores a simple goal of everyday life and then saves it with the poin
 
 */
 
-public class SpamSimpleGoal: SpamParentGoal
+public class SpamSimpleGoal : SpamParentGoal
 {
-  public SpamSimpleGoal(string _SpamName, string _SpamDescription, int _SpamScore ):base (_SpamName, _SpamDescription, _SpamScore)
+  public SpamSimpleGoal(string _SpamName, string _SpamDescription, int _SpamScore) : base(_SpamName, _SpamDescription, _SpamScore)
   {
 
   }
 
-  public override string SpamToString(){
-    if ( base.SpamGetIsComplete() == true){
+  public override string SpamToString()
+  {
+    if (base.SpamGetIsComplete() == true)
+    {
       return $"[X] {base._spamName} ({base._spamDescription})";
-    } 
-    
-    else{
+    }
+
+    else
+    {
       return $"[] {base._spamName} ({base._spamDescription})";
     }
   }
 
+  public override string SpamGetStringToSave()
+  {
+    return $"{_spamName}|{_spamDescription}|{_spamPoints}|{_spamIsComplete}|simple";
+  }
 }

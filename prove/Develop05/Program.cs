@@ -26,18 +26,34 @@ class Program
   static void Main(string[] args)
   {
     Console.Clear();
+    List<String> spamLevels = new List<String>() { "Recruit", "Ninja", "Knight", "Samurai" };
+    string spamCurrentLevel = spamLevels[0];
     int spamCurrentPoints = 0;
     List<SpamParentGoal> spamGoals = new List<SpamParentGoal>();
     SPAMMenu spamMenu = new SPAMMenu();
+    SpamFileManager spamFileManager = new SpamFileManager();
     bool spamKeepRunning = true;
 
     while (spamKeepRunning)
     {
+      if (spamCurrentPoints > 800)
+      {
+        spamCurrentLevel = spamLevels[3];
+      }
+      else if (spamCurrentPoints > 500)
+      {
+        spamCurrentLevel = spamLevels[2];
+      }
+      else if (spamCurrentPoints > 300)
+      {
+        spamCurrentLevel = spamLevels[1];
+      }
       Console.Clear();
       SpamPrint("SPAM Goal Tracker");
       SpamPrint("");
       SpamPrint($"You have {spamCurrentPoints} points");
       SpamPrint("");
+      SpamPrint($"You are a {spamCurrentLevel}");
       spamMenu.SPAMmenuSelection();
       String spamChoice = spamMenu.SPAMselection();
       switch (spamChoice)
@@ -100,9 +116,65 @@ class Program
           break;
         case "3":
           // Save Goals
+          SpamPrint("Saving Goals...");
+          List<String> spamGoalsAsStrings = new List<String>();
+
+          foreach (SpamParentGoal goal in spamGoals)
+          {
+            spamGoalsAsStrings.Add(goal.SpamGetStringToSave());
+          }
+
+          spamFileManager.SpamFileSaver(spamGoalsAsStrings, spamCurrentPoints);
+
+          SpamPrint("File Saved!");
+          SpamPrint("Press Enter to continue");
+          SpamRead();
           break;
         case "4":
           // Load Goals
+          SpamPrint("Loading Goals...");
+          List<List<string>> spamLoadedGoalsStrings = spamFileManager.SpamFileLoader();
+
+          spamGoals.Clear();
+
+          spamCurrentPoints = int.Parse(spamLoadedGoalsStrings[0][0]);
+          spamLoadedGoalsStrings.RemoveAt(0);
+
+          foreach (List<String> record in spamLoadedGoalsStrings)
+          {
+            switch (record[4])
+            {
+              case "simple":
+                SpamSimpleGoal loadedSimpleGoal = new SpamSimpleGoal(record[0], record[1], int.Parse(record[2]));
+                if (record[3] == "True")
+                {
+                  loadedSimpleGoal.SpamRecordEvent();
+                }
+                spamGoals.Add(loadedSimpleGoal);
+                break;
+              case "checklist":
+                SpamChecklistGoal loadedChecklistGoal = new SpamChecklistGoal(record[0], record[1], int.Parse(record[2]), int.Parse(record[5]), int.Parse(record[6]));
+
+                for (int i = 0; i < int.Parse(record[6]); i++)
+                {
+                  loadedChecklistGoal.SpamRecordEvent();
+                }
+
+                spamGoals.Add(loadedChecklistGoal);
+                break;
+              case "eternal":
+                SpamEternalGoal loadedEternalGoal = new SpamEternalGoal(record[0], record[1], int.Parse(record[2]));
+                if (record[3] == "True")
+                {
+                  loadedEternalGoal.SpamRecordEvent();
+                }
+                spamGoals.Add(loadedEternalGoal);
+                break;
+            }
+          }
+          SpamPrint("File loaded");
+          SpamPrint("Press Enter to continue");
+          SpamRead();
           break;
         case "5":
           // Record Event

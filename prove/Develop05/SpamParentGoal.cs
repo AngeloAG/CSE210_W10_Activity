@@ -51,4 +51,6 @@ public abstract class SpamParentGoal
   {
     return _spamIsComplete;
   }
+
+  public abstract String SpamGetStringToSave();
 }
